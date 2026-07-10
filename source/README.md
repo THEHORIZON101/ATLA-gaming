@@ -18,7 +18,7 @@ npm test
 
 ## Data and trust
 
-The included model/provider records are fictional sample data, deliberately avoiding unsupported claims about live products. Replace `src/data.ts` with maintained, source-linked records or a backend adapter before production use.
+The catalog contains real model families from major providers with links to official documentation. The initial quality, speed, value, privacy, reliability, and context scores are editorial preview estimates—not independent benchmark results—and are labeled that way in the interface.
 
 ## Architecture
 
@@ -31,7 +31,7 @@ The included model/provider records are fictional sample data, deliberately avoi
 
 ## Production roadmap
 
-The current release is a frontend vertical slice. Production deployment still requires PostgreSQL/Prisma persistence, authenticated accounts and RBAC, server-side ingestion adapters, live source verification, alerts, rate limiting, and an admin backend. The UI labels all bundled records as sample data.
+The current release is a frontend vertical slice. Production deployment still requires PostgreSQL/Prisma persistence, authenticated accounts and RBAC, server-side ingestion adapters, independent benchmark ingestion, pricing history, alerts, rate limiting, and an admin backend.
 
 ## Deployment
 
