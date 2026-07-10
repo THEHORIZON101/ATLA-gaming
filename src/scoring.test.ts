@@ -1,0 +1,2 @@
+import {describe,it,expect} from 'vitest';import {models} from './data';import {defaultPriorities,rank,weightsFor} from './scoring';
+describe('recommendations',()=>{it('normalizes weights',()=>expect(Object.values(weightsFor('coding',defaultPriorities)).reduce((a,b)=>a+b,0)).toBeCloseTo(1));it('prioritizes open model for local use',()=>expect(rank(models,'local')[0].open).toBe(true));it('returns descending scores',()=>{const r=rank(models,'coding');expect(r[0].score).toBeGreaterThanOrEqual(r[1].score)})});
