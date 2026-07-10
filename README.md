@@ -4,7 +4,7 @@ AI Compass is a task-specific AI model discovery, comparison, ranking, and recom
 
 **Live site:** https://thehorizon101.github.io/ATLA-gaming/
 
-The repository root contains the compiled static site used by GitHub Pages. Maintainable TypeScript/React source is stored in [`source/`](source/).
+The repository root contains the compiled static site published directly by GitHub Pages. Maintainable TypeScript/React source is stored in [`source/`](source/).
 
 ## Develop locally
 
