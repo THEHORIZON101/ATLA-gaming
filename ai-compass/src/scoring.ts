@@ -1,0 +1,6 @@
+import type {Model,Priorities,Task} from './types';
+export const defaultPriorities:Priorities={quality:35,reliability:20,value:15,speed:10,context:10,privacy:10};
+const taskBoost:Record<Task,Partial<Priorities>>={coding:{quality:12,reliability:8,context:7},writing:{quality:15,reliability:4},research:{quality:12,context:12,reliability:8},images:{quality:22,speed:5},video:{quality:22,value:4},audio:{speed:12,reliability:10},agents:{reliability:14,speed:5,context:5},local:{privacy:30,value:10}};
+export function weightsFor(task:Task,p:Priorities){const b=taskBoost[task];const raw={...p};Object.entries(b).forEach(([k,v])=>raw[k as keyof Priorities]+=(v||0));const total=Object.values(raw).reduce((a,b)=>a+b,0);return Object.fromEntries(Object.entries(raw).map(([k,v])=>[k,v/total])) as Priorities}
+export function score(model:Model,task:Task,p:Priorities=defaultPriorities){const w=weightsFor(task,p);const fit=model.best.includes(task)?8:0;return Math.min(99,Math.round(model.quality*w.quality+model.speed*w.speed+model.value*w.value+model.privacy*w.privacy+model.context*w.context+model.reliability*w.reliability+fit))}
+export function rank(items:Model[],task:Task,p:Priorities=defaultPriorities){return [...items].map(m=>({...m,score:score(m,task,p)})).sort((a,b)=>b.score-a.score)}
